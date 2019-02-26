@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles.css')}}">
+    <title>Job Details</title>
+</head>
+
+<body>
+
+    {#CONTAINER#}
+    <div class='outer_container'>
+        <div class='container'>
+
+            {# TOP NAVBAR / ABOUT THE USER#}
+
+            <div class="top_row">
+                <h2>Hello {{users[0]['first_name']}}! These are the job details!</h2>
+                <a href='/home'>Dashboard |</a> <a href='/logoff'>Logout</a>
+            </div>
+
+            {# DISPLAYING jobs #}
+
+            <table>
+                {% for job in jobs %}
+
+                <tr>
+                    <td> {{job['job_title']}} </td>
+                </tr>
+                <tr>
+                    <td> {{job['job_description']}} </td>
+                </tr>
+                <tr>
+                        <td> Location: {{job['address']}} </td>
+                    </tr>
+                <tr>
+                        <td> Posted by: {{job['first_name']}} </td>
+                    </tr>
+                    <tr>
+                            <td> Posted date: {{job['updated_at']}} </td>
+                        </tr>
+    
+
+                <tr>
+                    
+                    <td>Categories: {{job['categories']}} </td>
+                
+                </tr>
+
+                {% endfor %}
+            </table>
+            {% for job in jobs %}
+            <a href='/pick_up_job/{{job["id"]}}'>Add to my jobs</a>
+            {% endfor %}
+            
+
+            {# END-CONTAINER #}
+        </div>
+    </div>
+
+</body>
+
+
+</html>

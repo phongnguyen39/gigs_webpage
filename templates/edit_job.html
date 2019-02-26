@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles.css')}}">
+    <title>New Job</title>
+</head>
+
+<body>
+    {# FLASH MESSSAGES #}
+
+    {% with jobs = get_flashed_messages() %}
+    {% if jobs %}
+    {% for jobs in jobs %}
+    <p id='flash'>{{jobs}}</p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+
+    {#CONTAINER#}
+    <div class='outer_container'>
+        <div class='container'>
+
+            {# TOP NAVBAR / ABOUT THE USER#}
+
+            <div class="top_row">
+                <h2>Hello {{users[0]['first_name']}}!  Let's edit your job!</h2>
+                        <a href='/home'>Dashboard    |</a> <a href='/logoff'>Logout</a>
+            </div>
+
+            {# CREATE A JOB #}
+
+            <div class="left_box">
+
+                <form action='/update/{{users[0]["id"]}}' method='post'>
+                    <label for='job_title'>Title</label><br>
+                    <label for='job_description'>Description</label><br>
+                    <label for='address'>Location</label><br>
+                    {#<label for = "job_categories">Categories</label><br>#}
+            </div>
+
+            <div class="right_box">
+                    <input type='text' name='job_title' value="{{users[0]["job_title"]}}"><br>
+                    <input type='text' name='job_description' value="{{users[0]["job_description"]}}"><br>
+                    <input type='text' name='address' value="{{users[0]["address"]}}""><br>{#
+                    <input type="checkbox" name="job_categories" value="pet_care">
+                    <label for="job_categories">Pet Care</label><br>
+                    <input type="checkbox" name="job_categories" value="electrical">
+                    <label for="job_categories">Electrical</label><br>
+                    <input type="checkbox" name="job_categories" value="garden">
+                    <label for="job_categories">Garden</label><br>
+                    <label for='other'>Other</label><br>
+                    <input type='text' name='other'>#}
+                    <input class='submit_button' type='submit' value='Submit'>
+                </form>
+                <form action='/cancel' method='post'>
+                    <input class='submit_button' type='submit' value='Cancel'>
+                </form>
+
+                </div>
+
+            {# END-CONTAINER #}
+        </div>
+    </div>
+
+</body>
+
+
+</html>

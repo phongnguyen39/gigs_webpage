@@ -1,0 +1,125 @@
+*{
+    border-radius: 5px;
+}
+
+/*Font*/
+/* {  
+    display: 
+    vertical-align:
+    width:
+    height:
+    margin:
+    padding:
+    text-decoration:
+    border-radius:
+    box-shadow:
+    border:
+    background:
+    background-color:
+    font-family:
+    font-size:
+    font-style:
+    font-weight:
+    color:
+    list-style:
+}*/
+
+#flash{
+    color: red;
+    text-align: center;
+}
+
+
+.top_row{
+    margin-bottom:1em;
+}
+
+.outer_container{
+    background: gray;
+}
+
+.container{
+    margin: 1em auto;
+    padding: 2em;
+    background-image: radial-gradient(rgb(92, 106, 121), rgb(36, 66, 95) );
+    height: 100%;
+    width: 50%;
+    text-align: center;
+    box-shadow: 1px 1px rgb(51, 51, 51);
+}
+
+.index_left_box{
+    display: inline-block;
+    /* width: 50%; */
+    
+}
+
+.index_right_box{
+    display: inline-block;
+    vertical-align: top;
+}
+
+.left_box{
+    display: inline-block;
+    font-size: 20px;
+    /* width: 50%; */
+    
+}
+
+.right_box{
+    display: inline-block;
+    vertical-align: top;
+}
+
+
+a{
+    color: rgb(10, 192, 192);
+}
+
+p, h4, h3, h2, h1, label, td, th, a{
+    margin: .2em;
+    color: white;
+}
+
+h1{
+    margin: .8em;
+    text-shadow: .05em .05em gray;
+}
+
+input{
+    margin: .2em;
+}
+
+.submit_button{
+    margin: 1em auto;
+    background-color: rgb(7, 146, 146);
+    border: 0px;
+    box-shadow: .5px .5px white;
+    color: white;
+    display: block;
+    text-align: center;
+}
+
+
+
+.send_box_msg, textarea{
+    margin: auto;
+    width: 100%;
+}
+
+
+.left_align_box{
+    text-align: left;
+}
+
+table{
+    margin-top: 1em;
+    background: gray;
+    width: 100%;
+}
+
+th{
+    background: rgba(82, 82, 82, 0.301);
+    border-radius: 0%;
+    
+}

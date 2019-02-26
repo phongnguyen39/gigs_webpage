@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles.css')}}">
+    <title>All jobs</title>
+</head>
+
+<body>
+    {# FLASH MESSSAGES #}
+
+    {% with jobs = get_flashed_messages() %}
+    {% if jobs %}
+    {% for jobs in jobs %}
+    <p id='flash'>{{jobs}}</p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+
+    {#CONTAINER#}
+    <div class='outer_container'>
+        <div class='container'>
+
+            {# TOP NAVBAR / ABOUT THE USER#}
+
+            <div class="top_row">
+                <h2>Hello {{users[0]['first_name']}}!</h2>
+                <a href='/logoff'>Logout</a>
+                <form action='/jobs/new'>
+                    <input class='submit_button' type='submit' value='New Job!'>
+                </form>
+            </div>
+
+            {# DISPLAYING jobs #}
+
+            <h4>Everyone's jobs:</h4>
+            <table>
+                <thead>
+                    <th>Job</th>
+                    <th>Location</th>
+                    <th>Actions</th>
+                </thead>
+                {% for jobs in all_jobs %}
+
+                <tr>
+                    <td> {{jobs['job_title']}} </td>
+                    <td> {{jobs['address']}} </td>
+                    <td> <a href='/job/{{jobs["id"]}}'>View</a> |
+                        
+                        {% if jobs['user_id'] == users[0]['id'] %}
+                        <a href='/remove/{{jobs["id"]}}'>Remove</a> |
+                        <a href='/edit/{{jobs["id"]}}'>Edit</a> |
+                        {% endif %}
+                        <a href='/pick_up_job/{{jobs["id"]}}'>Add</a>
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </table>
+
+            <h4>{{users[0]['first_name']}}'s jobs:</h4>
+            <table>
+                <thead>
+                    <th>Job</th>
+                    <th>Actions</th>
+                </thead>
+                {% for user_job in user_jobs %}
+
+                <tr>
+                    <td> {{user_job['job_title']}} </td>
+                    <td> <a href='/job/{{user_job["id"]}}'>View</a> | 
+                        <a href='/done/{{user_job["id"]}}'>Done</a> | 
+                        <a href='/giveup/{{user_job["id"]}}'>Give Up</a>
+                    </td>
+
+                </tr>
+                {% endfor %}
+            </table>
+
+
+
+
+
+
+            {# END-CONTAINER #}
+        </div>
+    </div>
+
+</body>
+
+
+</html>
